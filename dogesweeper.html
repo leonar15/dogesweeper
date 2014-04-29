@@ -1,0 +1,88 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/dogesweeper.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#dogeboard').dogesweeper();
+        });
+    </script>
+    <style type="text/css">
+        .board {
+            border: 1px solid #ddd;
+            overflow:hidden;
+            font-family: sans-serif;
+            background-color: white;
+            border-radius: 3px;
+            padding: 5px;
+            margin: 20px auto;
+        }
+        .board .board-square {
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            background: #EEE;
+            width: 25px;
+            height: 25px;
+            border-radius: 3px;
+            margin: 1px;
+            text-align: center;
+            font-size: 14px;
+            padding-top: 5px;
+            font-weight: bold;
+            color: white;
+        }
+        .board .board-square.fresh {
+            background-color: #BBB;
+            background-image: none;
+        }
+        .board .board-square.tagged {
+            background-color: #ffb700;
+        }
+        .board .board-square.fresh:hover {
+            background-color: #888;
+            cursor: pointer;
+        }
+        .board .board-square.square1 {
+            color: #0909ae;
+        }
+        .board .board-square.square2 {
+            color: #008d2e;
+        }
+        .board .board-square.square3 {
+            color: #6211be;
+        }
+        .board .board-square.square4 {
+            color: #de00bd;
+        }
+        .board .board-square.square5 {
+            color: #aa00de;
+        }
+        .board .board-square.square6 {
+            color: #de7f00;
+        }
+        .board .board-square.square7 {
+            color: #fd5a00;
+        }
+        .board .board-square.square8 {
+            color: #ff0000;
+        }
+        .board .board-square.squarem{
+            background-image: url('img/suchdoge.jpg');
+            background-size: 25px 25px;
+            color: red;
+            font-size: 36px;
+            padding-top: 0;
+            line-height: 21px;
+            font-weight: normal;
+        }
+        
+    </style>
+    <title>
+        DogeSweeper
+    </title>
+</head>
+<body>
+    <div id="dogeboard"></div>
+</body>
+</html>
