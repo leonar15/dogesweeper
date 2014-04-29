@@ -4,7 +4,18 @@
     <script type="text/javascript" src="js/dogesweeper.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('#dogeboard').dogesweeper();
+            var dogeptions = {};
+                hash_params = this_param = '';
+            
+            if (window.location.hash) {
+                hash_params = (window.location.hash.substr(1)).split("&");
+                for (i = 0; i < hash_params.length; i++) {
+                    this_param = hash_params[i].split("=");
+                    dogeptions[this_param[0]] = this_param[1];
+                }
+            }
+
+            $('#dogeboard').dogesweeper(dogeptions);
         });
     </script>
     <style type="text/css">
@@ -24,7 +35,7 @@
             background: #EEE;
             width: 25px;
             height: 25px;
-            border-radius: 3px;
+            border-radius: 2px;
             margin: 1px;
             text-align: center;
             font-size: 14px;
@@ -36,12 +47,17 @@
             background-color: #BBB;
             background-image: none;
         }
-        .board .board-square.tagged {
+        .board .board-square.flagged {
             background-color: #ffb700;
+            cursor: pointer;
         }
         .board .board-square.fresh:hover {
             background-color: #888;
             cursor: pointer;
+        }
+        .board.gameover .board-square.fresh:hover {
+            cursor: auto;
+            background-color: #BBB;
         }
         .board .board-square.square1 {
             color: #0909ae;
@@ -67,7 +83,7 @@
         .board .board-square.square8 {
             color: #ff0000;
         }
-        .board .board-square.squarem{
+        .board .board-square.squared{
             background-image: url('img/suchdoge.jpg');
             background-size: 25px 25px;
             color: red;
