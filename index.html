@@ -19,14 +19,56 @@
         });
     </script>
     <style type="text/css">
-        .board {
-            border: 1px solid #ddd;
-            overflow:hidden;
+        html {
             font-family: sans-serif;
+        }
+        #dogeboard {
+            margin: 20px auto;
+            border: 1px solid #ddd;
+        }
+        .controls {
+            margin-bottom: 10px;
+            min-width: 250px;
+            height:60px;
+            position: relative;
+        }
+        .controls .doge {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -25px;
+            width:50px;
+            height: 50px;
+            border:1px solid #bbb;
+            background-image: url('img/suchdoge.jpg');
+            background-size: 50px 50px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+            cursor:pointer;
+            transition: .1s all;
+        }
+        .controls .doge:active {
+            top:11px;
+        }
+        .controls .time,
+        .controls .score {
+            position: absolute;
+            bottom: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            width: 100px;
+        }
+        .controls .time {
+            right: 10px;
+        }
+        .controls .score {
+            left: 10px;
+        }
+        .board {
+            overflow:hidden;
             background-color: white;
             border-radius: 3px;
             padding: 5px;
-            margin: 20px auto;
         }
         .board .board-square {
             display: block;
