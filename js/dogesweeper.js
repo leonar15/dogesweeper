@@ -6,10 +6,11 @@ $(function(){
     $.fn.dogesweeper = function(options){
         var $board_box = $(this),
             $board = $('<div class="board" />')
+            $control_box = $('<div class="controls"/>')
             default_options = {
                 doges: 20,
-                width: 20,
-                height: 20,
+                width: 15,
+                height: 15,
                 square_width: 25
             },
             options = options ? options : {},
@@ -41,9 +42,18 @@ $(function(){
         }
 
         function generate_controls() {
+            $control_box
+                .html('<div class="score"></div><div class="doge"></div><div class="time"></div>')
+                .on('click', '.doge', function() {
+                    
+                })
+                .appendTo($board_box);
         }
         
         function generate_board() {
+            // clear the board
+            $board
+                .html();
             //generate doges
             while (doges_added < default_options.doges) {
                 
@@ -87,21 +97,29 @@ $(function(){
             for (row_y = 0; row_y < default_options.height; row_y++) {
                 for (row_x = 0; row_x < default_options.width; row_x++) {
                 
-                    //build the DOM of the square
+                    //build each square
                     $board_square = $('<div id="'+ get_square_key(row_x, row_y) +'" class="board-square fresh" />')
                                         .appendTo($board);
                 }
             }
 
-            //handle click events
+            var board_width = default_options.width * (default_options.square_width  + 2),
+                board_height = default_options.height * (default_options.square_width + 2);
+
             $board_box
-                .html();
+                .css({
+                  'width': board_width + 10
+                })
+                
+            $control_box
+                .find('.time').html('0').end()
+                .find('.score').html(default_options.doges).end();
                 
             $board
                 .removeClass('gameover')
                 .css({
-                  'width': default_options.width * (default_options.square_width  + 2),
-                  'height': default_options.height * (default_options.square_width + 2)
+                  'width': board_width,
+                  'height': board_height
                 })
                 .on('click contextmenu', '.board-square.fresh, .board-square.flagged', function(event){
                     var $square = $(this),
@@ -196,19 +214,27 @@ $(function(){
         
         function game_end(is_win) {
             var this_doge,
-                doge_pos;
+                doge_pos,
+                $square;
             
             if (is_win) {  
                 alert('wow');
             } else {
                 //show all doges!
                 for (this_doge in doges) {
-                    uncover_square($('#' + this_doge), 'd');
+                    $square = $('#' + this_doge);
+                    
+                    if ($square.hasClass('fresh')) {
+                        uncover_square($square, 'd');
+                    }
                 }
             }
             $board.addClass('gameover');
         }
         function check_game_status() {
+            $control_box
+                .find('.score').html(default_options.doges - doges_found).end();
+
             if (default_options.num_tiles == tiles_found
                 && default_options.doges == doges_found) {
                 
