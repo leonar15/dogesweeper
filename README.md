@@ -3,6 +3,7 @@ dogesweeper
 
 So mines. Such wow.
 
+Play the demo here: http://leonar15.github.io/dogesweeper/
 
 Todos:
 * Right-click on exposed number to auto-open tiles
