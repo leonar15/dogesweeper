@@ -14,6 +14,7 @@ $(function(){
 			}, custom_options),
 			Game = {
 				_game: null,
+				_theme: null,
 				init: function ($game_box, options) {
 					// save pointer to game box
 					this.$game_box = $game_box.addClass('memesweeper');
@@ -21,7 +22,7 @@ $(function(){
 					this.$board = $('<div class="board" />');
 					this.options = options;
 
-					this.load_theme(options.theme);
+					this.apply_theme(options.theme);
 					this.generate_controls();
 					this.restart();
 				},
@@ -36,15 +37,21 @@ $(function(){
 						start_time: null
 					};
 				},
-				load_theme: function (theme) {
-					//add custom stylesheet
-					$('<link />')
+				apply_theme: function (theme) {
+					if (this._theme) {
+						// disable the existing stylesheet
+						this._theme.prop('disabled',true);
+					}
+
+					// add custom stylesheet
+					this._theme = $('<link />')
 						.attr({
 							type: 'text/css',
 							href: 'themes/' + theme + '/theme.css',
 							rel: 'stylesheet'
 						})
 						.appendTo('head');
+					this.$game_box.addClass('themed');
 				},
 				generate_controls: function () {
 
