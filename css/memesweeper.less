@@ -1,0 +1,148 @@
+html {
+    font-family: arial, verdana, sans-serif;
+}
+#gameboard {
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 0px 7px rgba(0,0,0,0.1);
+}
+.memesweeper {
+	position: relative;
+	.controls {
+	    margin-bottom: 10px;
+	    min-width: 250px;
+	    height: 60px;
+	    position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: -16px;
+			width: 100%;
+			text-align: center;
+			color: red;
+			font-size: 12px;
+		}
+		.button {
+		    position: absolute;
+		    top: 10px;
+		    left: 50%;
+		    margin-left: -25px;
+		    width: 50px;
+		    height: 50px;
+		    border: 1px solid #bbb;
+		    background-size: cover;
+		    background-color: red;
+		    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+		    cursor: pointer;
+		    transition: .1s top;
+			&:active {
+			    top: 11px;
+			}
+		}
+		.time,
+		.score {
+			position: absolute;
+			bottom: 10px;
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+			width: 100px;
+			&:before {
+				content: "Time";
+				position: absolute;
+				width: 100%;
+				left: 0;
+				top: -13px;
+				text-align: center;
+				color: #AAA;
+				font-size: 11px;
+			}
+		}
+		.time {
+			right: 10px;
+		}
+		.score {
+		    left: 10px;
+		}
+	}
+	.board {
+	    overflow:hidden;
+	    background-color: white;
+	    border-radius: 3px;
+	    padding: 5px;
+	    user-select: none;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    cursor: default;
+		.board-square {
+		    display: block;
+		    float: left;
+		    box-sizing: border-box;
+		    background: #EEE;
+		    width: 25px;
+		    height: 25px;
+		    border-radius: 2px;
+		    margin: 1px;
+		    text-align: center;
+		    font-size: 14px;
+		    padding-top: 5px;
+		    font-weight: bold;
+		    color: white;
+			&.fresh {
+			    background-color: #BBB;
+			    background-image: none;
+				&:hover {
+				    background-color: #888;
+				    cursor: pointer;
+				}
+			}
+			&.flagged {
+			    background-color: #ffb700;
+			    cursor: pointer;
+			}
+			&.square1 {
+			    color: #0909ae;
+			}
+			&.square2 {
+			    color: #008d2e;
+			}
+			&.square3 {
+			    color: #6211be;
+			}
+			&.square4 {
+			    color: #de00bd;
+			}
+			&.square5 {
+			    color: #aa00de;
+			}
+			&.square6 {
+			    color: #de7f00;
+			}
+			&.square7 {
+			    color: #fd5a00;
+			}
+			&.square8 {
+			    color: #ff0000;
+			}
+			&.squared{
+			    background-size: cover;
+			    color: red;
+			    font-size: 36px;
+			    padding-top: 0;
+			    line-height: 21px;
+			    font-weight: normal;
+			}
+		}
+		&.gameover .board-square {
+			&.fresh:hover {
+			    cursor: auto;
+				background-color: #BBB;
+			}
+			&.flagged {
+				cursor: default;
+			}
+		}
+	}
+}
+
+
