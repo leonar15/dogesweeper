@@ -1,0 +1,160 @@
+html {
+  font-family: arial, verdana, sans-serif;
+}
+#gameboard {
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.1);
+}
+.memesweeper {
+  position: relative;
+}
+.memesweeper .controls {
+  margin-bottom: 10px;
+  min-width: 250px;
+  height: 60px;
+  position: relative;
+}
+.memesweeper .controls:before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 12px;
+}
+.memesweeper .controls .button {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #bbb;
+  background-image: url('suchdoge.jpg');
+  background-size: 50px 50px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: .1s top;
+}
+.memesweeper .controls .button:active {
+  top: 11px;
+}
+.memesweeper .controls .time,
+.memesweeper .controls .score {
+  position: absolute;
+  bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  width: 100px;
+}
+.memesweeper .controls .time:before,
+.memesweeper .controls .score:before {
+  content: "Time";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -13px;
+  text-align: center;
+  color: #AAA;
+  font-size: 11px;
+}
+.memesweeper .controls .time {
+  right: 10px;
+}
+.memesweeper .controls .score {
+  left: 10px;
+}
+.memesweeper .controls .score:before {
+  content: "Memes";
+}
+.memesweeper.winner .controls:before {
+  content: 'wow. much amaze.';
+  color: darkgreen;
+}
+.memesweeper.winner .controls .button {
+  background-image: url('doge-sunglasses.png');
+}
+.memesweeper.loser .controls:before {
+  content: 'so wow. maybe next time.';
+  color: red;
+}
+.memesweeper .board {
+  overflow: hidden;
+  background-color: white;
+  border-radius: 3px;
+  padding: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+}
+.memesweeper .board .board-square {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  background: #EEE;
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  margin: 1px;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 5px;
+  font-weight: bold;
+  color: white;
+}
+.memesweeper .board .board-square.fresh {
+  background-color: #BBB;
+  background-image: none;
+}
+.memesweeper .board .board-square.fresh:hover {
+  background-color: #888;
+  cursor: pointer;
+}
+.memesweeper .board .board-square.flagged {
+  background-color: #ffb700;
+  cursor: pointer;
+}
+.memesweeper .board .board-square.square1 {
+  color: #0909ae;
+}
+.memesweeper .board .board-square.square2 {
+  color: #008d2e;
+}
+.memesweeper .board .board-square.square3 {
+  color: #6211be;
+}
+.memesweeper .board .board-square.square4 {
+  color: #de00bd;
+}
+.memesweeper .board .board-square.square5 {
+  color: #aa00de;
+}
+.memesweeper .board .board-square.square6 {
+  color: #de7f00;
+}
+.memesweeper .board .board-square.square7 {
+  color: #fd5a00;
+}
+.memesweeper .board .board-square.square8 {
+  color: #ff0000;
+}
+.memesweeper .board .board-square.squared {
+  background-image: url('suchdoge.jpg');
+  background-size: 25px 25px;
+  color: red;
+  font-size: 36px;
+  padding-top: 0;
+  line-height: 21px;
+  font-weight: normal;
+}
+.memesweeper .board.gameover .board-square.fresh:hover {
+  cursor: auto;
+  background-color: #BBB;
+}
+.memesweeper .board.gameover .board-square.flagged {
+  cursor: default;
+}
