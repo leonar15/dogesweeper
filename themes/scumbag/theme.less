@@ -1,0 +1,42 @@
+.memesweeper.themed {
+	.controls {
+		.button {
+		    background-image: url('scumbag-steve.jpg');
+		}
+		.score {
+			&:before {
+				content: "Scumbags";
+			}
+		}
+	}
+	&.winner {
+		.controls {
+			// show a success message
+			&:before {
+				content: 'cool. so can I borrow more cash.';
+				color: darkgreen;
+			}
+			.button {
+			    background-image: url('scumbag-steve-sunglasses.jpg');
+			}
+		}
+	}
+	&.loser {
+		.controls {
+			// show a success message
+			&:before {
+				content: "don't worry bro. this one's on you.";
+				color: red;
+			}
+		}
+	}
+	.board {
+		.board-square {
+			&.squared{
+			    background-image: url('scumbag-steve.jpg');
+			}
+		}
+	}
+}
+
+
