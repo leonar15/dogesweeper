@@ -1,146 +1,28 @@
 <html>
-<head>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/dogesweeper.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            var dogeptions = {};
-                hash_params = this_param = '';
-            
-            if (window.location.hash) {
-                hash_params = (window.location.hash.substr(1)).split("&");
-                for (i = 0; i < hash_params.length; i++) {
-                    this_param = hash_params[i].split("=");
-                    dogeptions[this_param[0]] = this_param[1];
-                }
-            }
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/memesweeper.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var game_options = {};
+					hash_params = this_param = '';
 
-            $('#dogeboard').dogesweeper(dogeptions);
-        });
-    </script>
-    <style type="text/css">
-        html {
-            font-family: sans-serif;
-        }
-        #dogeboard {
-            margin: 20px auto;
-            border: 1px solid #ddd;
-        }
-        .controls {
-            margin-bottom: 10px;
-            min-width: 250px;
-            height:60px;
-            position: relative;
-        }
-        .controls .doge {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            margin-left: -25px;
-            width:50px;
-            height: 50px;
-            border:1px solid #bbb;
-            background-image: url('img/suchdoge.jpg');
-            background-size: 50px 50px;
-            box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-            cursor:pointer;
-            transition: .1s all;
-        }
-        .controls .doge:active {
-            top:11px;
-        }
-        .controls .time,
-        .controls .score {
-            position: absolute;
-            bottom: 10px;
-            font-weight: bold;
-            font-size: 15px;
-            text-align: center;
-            width: 100px;
-        }
-        .controls .time {
-            right: 10px;
-        }
-        .controls .score {
-            left: 10px;
-        }
-        .board {
-            overflow:hidden;
-            background-color: white;
-            border-radius: 3px;
-            padding: 5px;
-        }
-        .board .board-square {
-            display: block;
-            float: left;
-            box-sizing: border-box;
-            background: #EEE;
-            width: 25px;
-            height: 25px;
-            border-radius: 2px;
-            margin: 1px;
-            text-align: center;
-            font-size: 14px;
-            padding-top: 5px;
-            font-weight: bold;
-            color: white;
-        }
-        .board .board-square.fresh {
-            background-color: #BBB;
-            background-image: none;
-        }
-        .board .board-square.flagged {
-            background-color: #ffb700;
-            cursor: pointer;
-        }
-        .board .board-square.fresh:hover {
-            background-color: #888;
-            cursor: pointer;
-        }
-        .board.gameover .board-square.fresh:hover {
-            cursor: auto;
-            background-color: #BBB;
-        }
-        .board .board-square.square1 {
-            color: #0909ae;
-        }
-        .board .board-square.square2 {
-            color: #008d2e;
-        }
-        .board .board-square.square3 {
-            color: #6211be;
-        }
-        .board .board-square.square4 {
-            color: #de00bd;
-        }
-        .board .board-square.square5 {
-            color: #aa00de;
-        }
-        .board .board-square.square6 {
-            color: #de7f00;
-        }
-        .board .board-square.square7 {
-            color: #fd5a00;
-        }
-        .board .board-square.square8 {
-            color: #ff0000;
-        }
-        .board .board-square.squared{
-            background-image: url('img/suchdoge.jpg');
-            background-size: 25px 25px;
-            color: red;
-            font-size: 36px;
-            padding-top: 0;
-            line-height: 21px;
-            font-weight: normal;
-        }
-        
-    </style>
-    <title>
-        DogeSweeper
-    </title>
-</head>
-<body>
-    <div id="dogeboard"></div>
-</body>
+				 if (window.location.hash) {
+					hash_params = (window.location.hash.substr(1)).split("&");
+					for (i = 0; i < hash_params.length; i++) {
+						this_param = hash_params[i].split("=");
+						game_options[this_param[0]] = this_param[1];
+					}
+				}
+
+				$('#gameboard').memesweeper(game_options);
+			});
+		</script>
+		<title>
+			 MemeSweeper
+		 </title>
+	</head>
+	<body>
+		 <div id="gameboard"></div>
+	</body>
 </html>
