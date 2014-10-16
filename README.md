@@ -5,12 +5,12 @@ So mines. Such wow.
 
 Play the demo here: http://leonar15.github.io/dogesweeper/
 
-Use the URL to play different size boards, e.g.
-9x9 - http://leonar15.github.io/dogesweeper/#width=9&height=9
-222x22 - http://leonar15.github.io/dogesweeper/#width=222&height=22
 
-Or make it super easy: http://leonar15.github.io/dogesweeper/#meme_ratio=.05
-Or super tough: http://leonar15.github.io/dogesweeper/#meme_ratio=.25
+Use the URL to play with game options:
+* 9x9 board - http://leonar15.github.io/dogesweeper/#width=9&height=9
+* 22x44 board - http://leonar15.github.io/dogesweeper/#width=22&height=44
+* a super easy board - http://leonar15.github.io/dogesweeper/#meme_ratio=.05
+* a super tough one - http://leonar15.github.io/dogesweeper/#meme_ratio=.25
 
 
 Todos:
