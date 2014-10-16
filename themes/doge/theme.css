@@ -78,7 +78,7 @@ html {
   background-image: url('doge-sunglasses.png');
 }
 .memesweeper.loser .controls:before {
-  content: 'so wow. such next time.';
+  content: 'so wow. maybe next time.';
   color: red;
 }
 .memesweeper .board {
