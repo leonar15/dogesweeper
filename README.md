@@ -6,7 +6,7 @@ So mines. Such wow.
 Play the demo here: http://leonar15.github.io/dogesweeper/
 
 
-Use the URL to play with game options:
+Use the URL to change some game options:
 * 9x9 board - http://leonar15.github.io/dogesweeper/#width=9&height=9
 * 22x44 board - http://leonar15.github.io/dogesweeper/#width=22&height=44
 * a super easy board - http://leonar15.github.io/dogesweeper/#meme_ratio=.05
