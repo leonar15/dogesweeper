@@ -23,4 +23,10 @@ Completed todos:
 * Add game reset support for doge control
 * Correctly display number of mines 
 * Doge-ified win/loss messages
-* Allow easy theming (create a new folder under /themes/my-custom-theme/theme.css) then set the options.theme = 'my-custom-theme' when initializing the game.
+* Allow easy theming (create a new folder under /themes/my-theme/theme.css) then set the options.theme = 'my-custom-theme' when initializing the game.
+
+How to create a theme:
+* copy the folder /themes/doge into a new folder in the /themes directory
+* name this new folder whatever you'd like (we'll use "my-theme" as the example)
+* customize the theme.css file to change how things look
+* to load a particular theme, just use a special link to set the "theme" option (e.g. /index.html#theme=my-theme)
