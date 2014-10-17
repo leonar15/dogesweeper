@@ -10,7 +10,8 @@ $(function(){
 				meme_ratio: .15,
 				width: 15,
 				height: 15,
-				square_width: 25
+				square_width: 25,
+				scumbag: false
 			}, custom_options),
 			Game = {
 				_game: null,
@@ -34,7 +35,8 @@ $(function(){
 						tiles_found: 0,
 						num_memes: 0,
 						memes_found: 0,
-						start_time: null
+						start_time: null,
+						played_first: false
 					};
 				},
 				apply_theme: function (theme) {
@@ -67,32 +69,26 @@ $(function(){
 					// reset the counters
 					this._game = this.get_empty_game();
 					this.Clock.stop();
-					this.generate_board(this._game);
+
+					// generate the game data
+					this.calculate_positions();
+
+					// render the playing field
+					this.render_board(this._game);
+
+					// reset classes
 					this.$game_box.removeClass('winner loser');
 				},
-				generate_board: function () {
-					var board_width = this.options.width * (this.options.square_width + 2),
-						board_height = this.options.height * (this.options.square_width + 2),
+				calculate_positions: function() {
+					var rand_x, rand_y, rand_key,
 						// for generating doges
-						rand_x, rand_y, rand_key,
-						// for generating the board
-						row_x, row_y,
 						this_meme_pos, this_meme_key, i, j, this_warning_key,
 						num_memes = Math.round(this.options.width * this.options.height * this.options.meme_ratio),
 						memes_added = 0;
 
-					// clear the board
-					this.$board.html('');
-
-					// render the playing field
-					for (row_y = 0; row_y < this.options.height; row_y++) {
-						for (row_x = 0; row_x < this.options.width; row_x++) {
-
-							//build each square
-							$('<div id="'+ this.Square.get_key(row_x, row_y) +'" class="board-square fresh" />')
-								.appendTo(this.$board);
-						}
-					}
+					// clear memes and warnings
+					this._game.memes = [];
+					this._game.warnings = [];
 
 					// generate memes
 					while (memes_added < num_memes) {
@@ -135,6 +131,26 @@ $(function(){
 									this._game.warnings[this_warning_key] += 1;
 								}
 							}
+						}
+					}
+
+				},
+				render_board: function () {
+					var board_width = this.options.width * (this.options.square_width + 2),
+						board_height = this.options.height * (this.options.square_width + 2),
+						// for generating the board
+						row_x, row_y;
+
+					// clear the board
+					this.$board.html('');
+
+					// render the playing field
+					for (row_y = 0; row_y < this.options.height; row_y++) {
+						for (row_x = 0; row_x < this.options.width; row_x++) {
+
+							//build each square
+							$('<div id="'+ this.Square.get_key(row_x, row_y) +'" class="board-square fresh" />')
+								.appendTo(this.$board);
 						}
 					}
 
@@ -185,6 +201,34 @@ $(function(){
 							if (is_flagged) {
 								// don't respond to normal clicks when it's been flagged
 								return;
+							}
+
+							// is it the first click and we're hitting a meme already?
+							if (!Game._game.played_first) {
+								Game._game.played_first = true;
+
+								// are we in scumbag mode?
+								if (Game.options.scumbag) {
+
+									if (this_val != 'd') {
+										// generate a board that has a doge at the first click
+										while (this_val != 'd') {
+											console.log('regenrating scumbag');
+											Game.calculate_positions();
+											// find the new value
+											this_val = Game.Square.get_value(this_pos.x, this_pos.y);
+										}
+									}
+
+								} else if (this_val == 'd') {
+									// keep trying to make a board where this square isn't a meme
+									while (this_val == 'd') {
+										console.log('regenrating');
+										Game.calculate_positions();
+										// find the new value
+										this_val = Game.Square.get_value(this_pos.x, this_pos.y);
+									}
+								}
 							}
 
 							//uncover the square
