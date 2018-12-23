@@ -212,8 +212,8 @@ $(function(){
 
 									if (this_val != 'd') {
 										// generate a board that has a doge at the first click
+										console.log('regenerating board for scumbag mode');
 										while (this_val != 'd') {
-											console.log('regenrating scumbag');
 											Game.calculate_positions();
 											// find the new value
 											this_val = Game.Square.get_value(this_pos.x, this_pos.y);
@@ -222,8 +222,8 @@ $(function(){
 
 								} else if (this_val == 'd') {
 									// keep trying to make a board where this square isn't a meme
+									console.log('regenerating board to avoid initial collision');
 									while (this_val == 'd') {
-										console.log('regenrating');
 										Game.calculate_positions();
 										// find the new value
 										this_val = Game.Square.get_value(this_pos.x, this_pos.y);
